@@ -5,7 +5,7 @@ class Api::LoginController < ApplicationController
     user = User.find_by_username(params[:username])
 
     if user && user.authenticate(params[:password])
-      render json: user
+      render json: {username: user.username, token: user.api_token}
     else
       render json: {error: "Invalid"}, status: :unauthorized
     end
