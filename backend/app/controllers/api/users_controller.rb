@@ -1,11 +1,13 @@
-class UsersController < ApplicationController
-  
+class Api::UsersController < ApplicationController
+  skip_before_action :verify_authentication
+
   def create
     @user = User.new(user_params)
-    if User.save 
+    if @user.save 
       render json: @user, status: :created
     else
-      render json: {"error": "Invalid"}, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   private

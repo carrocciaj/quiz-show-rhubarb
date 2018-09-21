@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, only:[:create]
+  namespace :api do
+    post "login", to: "login#create"
+    resources :users, only:[:create]
+  end
 end
