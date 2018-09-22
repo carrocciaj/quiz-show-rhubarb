@@ -1,4 +1,5 @@
 class Api::QuizzesController < ApplicationController
+    before_action :set_quiz, only: [:show, :destroy, :update]
 
     def index
     end
@@ -22,6 +23,10 @@ class Api::QuizzesController < ApplicationController
     end
 
 private
+
+    def set_quiz
+        @quiz = Quiz.find(params[:id])
+    end
 
     def quiz_params
         params.require(:quiz).permit(:title)
