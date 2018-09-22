@@ -10,7 +10,22 @@ const data = {
   },
   getUserToken: () => {
     return userToken
-  } 
+  },
+  
+login: (username, password) => {
+  return request.post(`${apiDomain}/api/login`)
+    .send({ username, password })
+    .then(res => res.body.api_token)
+    .then( token => {
+      data.setUserToken(token)
+      return { username, token }
+    })
+    // COME BACK TO THIS PART BELOW:
+    // .catch(err) => {
+    //   if (err.response.statusCode
+    //   Come back to this
+    // }
+  }
 
   getUserToken 
 
