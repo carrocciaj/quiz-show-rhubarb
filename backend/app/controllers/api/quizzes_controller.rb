@@ -54,7 +54,7 @@ private
     end
 
     def quiz_params
-        params.require(:quiz).permit(:title)
+        params.require(:quiz).permit(:title, :published)
     end
 
 end
