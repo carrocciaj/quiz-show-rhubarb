@@ -20,24 +20,28 @@ class Api::QuizzesController < ApplicationController
                 render json: @quiz.errors, status: :unprocessable_entity
             end
         else
-            render json: {error: "You don't have permission to access these resources"}, status: :unauthorized
+            render json: {error: "Only Admins can Create Quizzes"}, status: :unauthorized
         end
     end
 
     def update
-        @quiz = Quiz.new(quiz_params)
+        if current_user.admin? && !@quiz.published?
+            @quiz = Quiz.find(quiz_params)
 
-        if @quiz.save 
-            render json: @quiz, status: :created
+            if @quiz.save 
+                render json: @quiz, status: :created
+            else
+                render json: @quiz.errors, status: :unprocessable_entity
+            end
         else
-            render json: @quiz.errors, status: :unprocessable_entity
+            render json: {error: "Only Admins can edit unpublished quizzes"}, status: :unauthorized
         end
     end
 
     def destroy
         if current_user.admin? && !@quiz.published?
             @quiz.destroy
-            render json: {}
+            render json: {notice: "Quiz number #{@quiz.id} successfully deleted"}, status: :deleted
         else
             render json: {error: "You don't have permission to delete this resource"}, status: :unauthorized
         end
