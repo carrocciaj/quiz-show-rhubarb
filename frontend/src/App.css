@@ -1,28 +1,115 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 auto;
+  
+}
+
+.quiz-container {
+  background-color: white;
+  margin: 0 20px;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.quiz-head {
+  font-size: 3rem;
+  margin: 20px auto;
+  font-weight: 100;
+  color: #CD5C5C;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.main-heads {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: allcaps;
 }
 
-.App-title {
-  font-size: 1.5em;
+.field {
+  margin: 0 20px;
 }
 
-.App-intro {
-  font-size: large;
+.label {
+  font-size: 1.5rem;
+  text-align: left;
+  font-weight: 100;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.input {
+  font-size: 1.5rem;
+  height: 50px;
+  font-weight: 100;
+  padding: 10px;
+  border-radius: 3px;
 }
+
+.login-submit {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.registration-option {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.registration-question {
+  display: inline-block;
+  font-size: 1.5rem;
+  text-emphasis: italic;
+  font-weight: 100;
+}
+
+.register-link {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+/* .add-item {
+  height: 50px;
+  border-radius: 0 3px 3px 0;
+} */
+
+.control {
+  display: block;
+  margin: 0 auto;
+}
+
+/* .displayed-items {
+  width: 80%;
+  font-size: 1.75rem;
+  font-weight: 100;
+  margin: 0 20px 0 5px;
+  display: inline-block;
+} */
+
+/* .check-box {
+  display: inline-block;
+  vertical-align: top; 
+  margin: 0 10px 5px 20px;
+} */
+
+/* .delete {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+} */
+
+/* .edit-field {
+  width: 80%;
+  font-size: 1.75rem;
+  height: 50px;
+  font-weight: 100;
+  padding: 10px;
+  margin: 0 0 20px 20px;
+  border-radius: 3px;
+  border-right: 0;
+}
+.item-list:hover {
+  cursor: pointer;
+} */
