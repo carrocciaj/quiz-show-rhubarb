@@ -27,6 +27,7 @@ body {
 .main-heads {
   font-size: 2rem;
   font-weight: 300;
+  text-transform: allcaps;
 }
 
 .field {
@@ -40,11 +41,33 @@ body {
 }
 
 .input {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   height: 50px;
   font-weight: 100;
   padding: 10px;
   border-radius: 3px;
+}
+
+.login-submit {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.registration-option {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.registration-question {
+  display: inline-block;
+  font-size: 1.5rem;
+  text-emphasis: italic;
+  font-weight: 100;
+}
+
+.register-link {
+  display: inline-block;
+  margin-left: 15px;
 }
 
 /* .add-item {

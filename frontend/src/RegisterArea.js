@@ -38,7 +38,7 @@ class RegisterArea extends React.Component {
     
     return (
       <React.Fragment>
-      <div className='login-view'>
+      <div className='registration-view'>
         <div className='main-heads'>Log in</div>
         <form>
           <div className='field'>

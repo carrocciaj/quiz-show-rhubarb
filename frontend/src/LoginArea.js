@@ -19,14 +19,15 @@ class LoginArea extends React.Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    const { username, password } = this.state
-    // data.login(username, password)
-      .then(user => this.props.setCurrentUser(user))
-      .catch(err => {
-        this.setState({
-          errorMsg: err.errorMessage
-        })
-      })
+    console.log(this.state.username, 'username')
+    // const { username, password } = this.state
+    // // data.login(username, password)
+    //   .then(user => this.props.setCurrentUser(user))
+    //   .catch(err => {
+    //     this.setState({
+    //       errorMsg: err.errorMessage
+    //     })
+    //   })
   }
 
   render () {
@@ -40,18 +41,21 @@ class LoginArea extends React.Component {
             <div className='field'>
               <label className='label'>Username</label>
               <div className='control'>
-                <input className='input' type='text' placeholder='username' value={username} onChange={(e) => this.setState({ username: e.target.value })} />
+                <input className='input' type='text' placeholder='username' onChange={(e) => this.setState({ username: e.target.value })} />
               </div>
             </div>
             <div className='field'>
               <label className='label'>Password</label>
               <div className='control'>
-                <input className='input' type='password' placeholder='password' value={password} onChange={(e) => this.setState({ password: e.target.value })} />
+                <input className='input' type='password' placeholder='password' onChange={(e) => this.setState({ password: e.target.value })} />
               </div>
-              <button type='submit'>Login</button>
-              <div>
-                <p> Don't have an account? </p>
-                <button>Register</button>
+              <button className='button is-primary login-submit' type='submit' onClick={(e) =>
+                this.handleSubmit(e)
+              }
+              >Login</button>
+              <div className='registration-option'>
+                <p className='registration-question'> Don't have an account? </p>
+                <button className='button is-primary register-link'>Register</button>
               </div>
             </div>
           </form>
