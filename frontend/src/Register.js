@@ -1,0 +1,6 @@
+import React from 'react'
+// import { NavLink } from 'react-router-dom'
+import data from './data'
+import PropTypes from 'prop-types'
+import 'bulma/css/bulma.css'
+import './App.css'
