@@ -37,6 +37,7 @@ class Api::QuizzesController < ApplicationController
     def destroy
         if current_user.admin? && !@quiz.published?
             @quiz.destroy
+            render json: {}
         else
             render json: {error: "You don't have permission to delete this resource"}, status: :unauthorized
         end
