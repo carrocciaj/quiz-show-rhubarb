@@ -13,7 +13,7 @@ class RegisterArea extends React.Component {
       username: '',
       password: '',
       passwordConfirmation: '',
-      errorMsg: null
+      errorMessage: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -30,7 +30,7 @@ class RegisterArea extends React.Component {
         //   })
         // })
     } else {
-      this.setState({ errorMsg: 'Your password confirmation must match your password.' })
+      this.setState({ errorMessage: 'Your password confirmation must match your password.' })
     }
   }
 
@@ -62,10 +62,6 @@ class RegisterArea extends React.Component {
                 </div>
               </div>
               <button className='button is-primary register-submit' type='submit' >Register</button>
-              {/* <div>
-              <p>Don't have an account?s</p>
-              <button>Register for an account</button>
-            </div> */}
             </form>
           </div>
         </QuizBoard>

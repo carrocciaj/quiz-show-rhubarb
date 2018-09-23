@@ -1,17 +1,51 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import 'bulma/css/bulma.css'
 import './App.css'
 
+import data from './data'
+
 class Dashboard extends React.Component {
-    constructor (props) {
-      super()
-      this.state = {
-        username: '',
-        password: '',
-        errorMessage: null
-      }
-      this.handleSubmit = this.handleSubmit.bind(this)
+  constructor () {
+    super()
+    this.state = {
+      quizzes: []
     }
-  
-export default Dashboard 
+    // this.XX = this.XX.bind(this)
+  }
+
+  componentDidMount () {
+    this.listQuizzes()
+  }
+
+  listQuizzes () {
+    const { currentUser } = this.props
+    if (currentUser && currentUser.token) {
+      data.setUserToken(currentUser.token)
+      data.getQuizzes().then(quizzes => this.setState({
+        quizzes
+      }))
+    }
+  }
+
+  render () {
+    const quiz = this.props.quizzes
+    return (
+      <React.Fragment>
+        <div className='dashboard-view'>
+          <div className='top-nav'>
+            <button className='button is-primary logout-button' onClick={this.props.logout} >log out</button>
+            <div className='logout-bar button'>logout</div>/>
+          </div>
+          <div className='main-heads'>Take a quiz!</div>
+          <div className='published-quizzes'>
+          this.state.quizzes.map(quiz =>
+            <quiz key={quiz.quiz.id} title={quiz.quiz.title} />
+          </div>
+        </div>
+      </React.Fragment>
+    )
+  }
+}
+
+export default Dashboard

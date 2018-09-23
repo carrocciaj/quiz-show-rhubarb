@@ -26,13 +26,13 @@ class LoginArea extends React.Component {
       .then(user => this.props.setCurrentUser(user))
       .catch(err => {
         this.setState({
-          errorMsg: err.errorMessage
+          errorMessage: err.errorMessage
         })
       })
   }
 
   render () {
-    const { username, password, errorMessage } = this.state
+    const { username, password } = this.state
 
     return (
       <React.Fragment>
