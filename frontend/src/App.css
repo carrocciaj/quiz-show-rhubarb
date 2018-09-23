@@ -70,6 +70,11 @@ body {
   margin-left: 15px;
 }
 
+.register-submit {
+  margin-top: 20px;
+  text-align: right;
+}
+
 /* .add-item {
   height: 50px;
   border-radius: 0 3px 3px 0;

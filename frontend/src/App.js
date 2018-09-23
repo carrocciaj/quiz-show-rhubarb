@@ -7,9 +7,10 @@ import React, { Component } from 'react'
 //   Redirect
 // } from 'react-router-dom
 import LoginArea from './LoginArea'
+import RegisterArea from './RegisterArea'
 import 'bulma/css/bulma.css'
 import './App.css'
-// import import data from './data'
+import data from './data'
 
 class App extends Component {
   constructor () {
@@ -17,23 +18,23 @@ class App extends Component {
     this.state = {
       currentUser: null
     }
+
+    const username = window.localStorage.getItem('username')
+    const token = window.localStorage.getItem('token')
+    if (username && token) {
+      this.state.currentUser = { username, token }
+      data.setUserToken(token)
+    }
+
+    this.setCurrentUser = this.setCurrentUser.bind(this)
+    // this.logout = this.logout.bind(this)
   }
 
-  //   const username = window.localStorage.getItem('username')
-  //   const token = window.localStorage.getItem('token')
-  //     if (username && token) {
-  //       this.state.currentUser = { username, token}
-  //       data.setUserToken(token)
-
-  //     this.setCurrentUser=this.setCurrentUser.bind(this)
-  //     this.logout = this.logout.bind(this)
-  // }
-
-  // setCurrentUser (user) {
-  //   window.localStorage.setItem('username', user.username)
-  //   window.localStorage.setItem('token', user.token)
-  //   this.setState({ currentUser: user})
-  // }
+  setCurrentUser (user) {
+    window.localStorage.setItem('username', user.username)
+    window.localStorage.setItem('token', user.token)
+    this.setState({ currentUser: user })
+  }
 
   // logout () {
   //   data.setUserToken(null)
@@ -46,12 +47,15 @@ class App extends Component {
   render () {
     const { currentUser } = this.state
     return (
-      <div className='quiz-container'>
-        <div className='quiz-head'>Quiz Rhubarb</div>
-        <LoginArea />
-      </div>
+      <React.Fragment>
+        <div className='quiz-container'>
+          <div className='quiz-head'>Quiz Rhubarb</div>
+          <LoginArea />
+          <RegisterArea />
+        </div>
+      </React.Fragment>
     )
   }
 }
 
-export default App 
+export default App
