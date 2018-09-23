@@ -24,11 +24,11 @@ class RegisterArea extends React.Component {
     if (password === passwordConfirmation) {
       data.users(username, password)
         .then(user => this.props.setCurrentUser(user))
-        .catch(err => {
-          this.setState({
-            errorMessage: err.message
-          })
-        })
+        // .catch(err => {
+        //   this.setState({
+        //     errorMessage: err.message
+        //   })
+        // })
     } else {
       this.setState({ errorMsg: 'Your password confirmation must match your password.' })
     }
@@ -58,7 +58,7 @@ class RegisterArea extends React.Component {
               <div className='field'>
                 <label className='label'>Confirm password</label>
                 <div className='control'>
-                  <input className='input' type='password' placeholder='Retype password' value={password} onChange={(e) => this.setState({ passwordConfirmation: e.target.value })} />
+                  <input className='input' type='password' placeholder='Retype password' value={passwordConfirmation} onChange={(e) => this.setState({ passwordConfirmation: e.target.value })} />
                 </div>
               </div>
               <button className='button is-primary register-submit' type='submit' >Register</button>

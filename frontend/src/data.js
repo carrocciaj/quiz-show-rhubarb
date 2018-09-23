@@ -26,7 +26,7 @@ const data = {
     //   Come back to this !!
     // }
   },
-  register: (username, password) => {
+ users: (username, password) => {
     return request.post(`${apiDomain}/api/users`)
       .send({ username, password })
       .then(res => res.body)
