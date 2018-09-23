@@ -2,12 +2,13 @@ class Api::QuizzesController < ApplicationController
     before_action :set_quiz, only: [:show, :destroy, :update]
 
     def index
-        @quizzes = Quiz.all
+        @quizzes = Quiz.where(published: true)
         render json: @quizzes
     end
 
     def show
-        render json: @quiz
+        @questions = @quiz.questions.includes(:answers) 
+       
     end
 
     def create
