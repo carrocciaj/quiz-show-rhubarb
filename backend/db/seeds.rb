@@ -7,9 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Answer.delete_all
 Question.delete_all
+Quiz.delete_all
+User.delete_all
 
+user = User.create!(username: 'test-user', password: 'password')
+admin = User.create!(username: 'test-admin', password: 'password', admin: true)
 
-Question.create([
+Quiz.create!([
+  {title: "Javascript Arrays", published: true},
+  {title: "Rails Models", published: true}
+])
+
+Question.create!([
   {text: 'What method do you use to get all records that match a condition?',
   quiz_id: 1},
   {text: 'What does `findIndex` return if no records match its condition?',
@@ -24,7 +33,7 @@ Question.create([
   quiz_id: 2}
 ])
 
-Answer.create([
+Answer.create!([
   {text: 'find',
     question_id: 1,
     correct: false},
