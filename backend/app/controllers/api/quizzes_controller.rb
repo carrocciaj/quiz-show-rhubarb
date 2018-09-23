@@ -7,8 +7,7 @@ class Api::QuizzesController < ApplicationController
     end
 
     def show
-        @questions = @quiz.questions.includes(:answers) 
-       
+        @questions = @quiz.questions.includes(:answers)  
     end
 
     def create
