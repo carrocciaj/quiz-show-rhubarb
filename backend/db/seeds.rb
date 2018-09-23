@@ -5,14 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Answer.delete_all
+Question.delete_all
 
-Quiz.create([
-  {title: 'Javascript Arrays'},
-  {title: 'Rails Models'},
-  {title: 'Data Structures'},
-  {title: 'Big O Notation'},
-  {title: 'SQL Queries'}
-])
 
 Question.create([
   {text: 'What method do you use to get all records that match a condition?',
