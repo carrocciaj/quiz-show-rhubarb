@@ -25,7 +25,7 @@ body {
 }
 
 .main-heads {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 300;
   text-transform: allcaps;
 }
@@ -35,7 +35,7 @@ body {
 }
 
 .label {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: left;
   font-weight: 100;
 }
@@ -49,7 +49,7 @@ body {
 }
 
 .login-submit {
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: right;
 }
 
@@ -60,7 +60,7 @@ body {
 
 .registration-question {
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-emphasis: italic;
   font-weight: 100;
 }
@@ -85,36 +85,8 @@ body {
   margin: 0 auto;
 }
 
-/* .displayed-items {
-  width: 80%;
-  font-size: 1.75rem;
-  font-weight: 100;
-  margin: 0 20px 0 5px;
-  display: inline-block;
-} */
-
-/* .check-box {
-  display: inline-block;
-  vertical-align: top; 
-  margin: 0 10px 5px 20px;
-} */
-
-/* .delete {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 0 10px;
-} */
-
-/* .edit-field {
-  width: 80%;
-  font-size: 1.75rem;
-  height: 50px;
-  font-weight: 100;
-  padding: 10px;
-  margin: 0 0 20px 20px;
-  border-radius: 3px;
-  border-right: 0;
+/* This is a temporary spacing measure until we get routes established! */
+.registration-view {
+  margin-top: 100px;
 }
-.item-list:hover {
-  cursor: pointer;
-} */
+
