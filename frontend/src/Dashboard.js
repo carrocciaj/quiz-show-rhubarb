@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
+import { BrowserRouter as Redirect } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -30,9 +30,10 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    // if (!this.props.currentUser) {
-    //   return <Redirect to="/login" />
-    // }
+    if (!this.props.currentUser) {
+      return <Redirect to='/login' />
+    }
+
     return (
       <React.Fragment>
         <div className='top-nav'>
@@ -45,7 +46,7 @@ class Dashboard extends React.Component {
             <div className='main-heads'>Take a quiz!</div>
             <div className='published-quizzes'>
               {this.state.quizzes.map(quiz =>
-                <listQuizzes key={quiz.quiz.id} title={quiz.quiz.title} />)}
+                <div key={quiz.quiz.id} title={quiz.quiz.title}>{quiz.quiz.title}</div>)}
             </div>
           </div>
         </div>

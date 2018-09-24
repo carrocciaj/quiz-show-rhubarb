@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import data from './data'
 // import QuizBoard from './QuizBoard'
 // import PropTypes from 'prop-types'
@@ -53,10 +53,8 @@ class LoginArea extends React.Component {
             </div>
             <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)}>Login</button>
             <div className='registration-option'>
-              <p className='registration-question'> Don't have an account? </p>
-              {/* Keeping a copy of the for when I figure out Routes. Commenting out for now. */}
-              {/* <Link to='/register'><button className='button is-primary register-link'>Register</button></Link> */}
-              <button className='button is-primary register-link'>Register</button>
+              <p className='registration-question'>Don't have an account?</p>
+              <Link to='/register'><button className='button is-primary register-link'>Register</button></Link>
             </div>
           </form>
         </div>
@@ -69,5 +67,4 @@ class LoginArea extends React.Component {
 // LoginArea.propTypes = {
 //   setCurrentUser: PropTypes.func.isRequired
 // }
-
 export default LoginArea

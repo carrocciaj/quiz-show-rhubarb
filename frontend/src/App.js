@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
 // import PropTypes from 'prop-types'
-// import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
 import RegisterArea from './RegisterArea'
@@ -42,51 +42,53 @@ class App extends Component {
   }
 
   render () {
-    // const { currentUser } = this.state
+    // if (!this.props.currentUser) {
+    //   return <Redirect to='/login' />
+    // }
+
     return (
     // Below is the temporary render of login and registration until routes are set
-      <React.Fragment>
-        <div className='quiz-container'>
-          <div className='quiz-head'>Quiz Rhubarb</div>
-          <LoginArea setCurrentUser={this.setCurrentUser} />
-          <RegisterArea setCurrentUser={this.setCurrentUser} />
-          <Dashboard />
-        </div>
-      </React.Fragment>
+    // <div className='quiz-container'>
+    //   <div className='quiz-head'>Quiz Rhubarb</div>
+    //   <LoginArea setCurrentUser={this.setCurrentUser} />
+    //   <RegisterArea setCurrentUser={this.setCurrentUser} />
+    //   <Dashboard />
+    // </div>
 
     // I'M TRYING TO GET THE ROUTER WORKING! WILL COME BACK TO THIS BECAUSE IT IS CRUCIAL!
-    // <Router>
-    //   <div className='App'>
-    //     <div className='Header'>
-    //       <div className='quiz-head'>Quiz Rhubarb</div>
-    //     </div>
-    //     <main>
-    //       <Route path='/login' render={() =>
-    //           <LoginArea setCurrentUser={this.setCurrentUser} />}
-    //       />
+      <Router>
+        <div className='App'>
+          <div className='Header'>
+            <div className='quiz-head'>Quiz Rhubarb</div>
+          </div>
+          <main>
+            <Route exact path='/' render={() => {
+              if (this.state.currentUser) {
+                return <Redirect to='/quizzes' />
+              } else {
+                return <Redirect to='/login' />
+              }
+            }} />
+            <Route path='/login' render={() => {
+              if (this.state.currentUser) {
+                return <Redirect to='/quizzes' />
+              } else {
+                return <LoginArea setCurrentUser={this.setCurrentUser} />
+              }
+            }}
+            />
 
-    //       <Route path='/register' render={() =>
-    //         <Guard condition={!this.state.currentUser} redirectTo='/'>
-    //           <RegisterArea setCurrentUser={this.setCurrentUser} />
-    //         </Guard>}
-    //       />
+            <Route path='/register' render={() =>
+              <RegisterArea setCurrentUser={this.setCurrentUser} />}
+            />
 
-    //       <Route path='/quizzes' render={() =>
-    //          <Dashboard currentUser={this.state.currentUser} logout={this.logout} />}
-    //       />
-    //     </main>
-    //   </div>
-    // </Router>
+            <Route path='/quizzes' render={() =>
+              <Dashboard currentUser={this.state.currentUser} logout={this.logout} />}
+            />
+          </main>
+        </div>
+      </Router>
     )
   }
 }
-
-// const Guard = ({ redirectTo, condition, children }) => {
-//   if (condition) {
-//     return children
-//   } else {
-//     return <Redirect to={redirectTo} />
-//   }
-// }
-
 export default App
