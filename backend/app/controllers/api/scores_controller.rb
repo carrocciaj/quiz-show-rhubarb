@@ -23,6 +23,8 @@ class Api::ScoresController < ApplicationController
         "score": @correct_count
       }
     )
+    
+    render json: { "score": @correct_count }
 
   end
 
