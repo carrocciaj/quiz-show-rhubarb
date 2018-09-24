@@ -44,7 +44,7 @@ const data = {
       .catch(err => {
         if (err.response.statusCode === 422) {
           const errors = err.response.body.errors
-          if (errors[0].msg === 'cannot be empty') {
+          if (errors[0].message === 'cannot be empty') {
             throw new Error('You must provide a username and password.')
           } else if (errors[0] === 'user already exists') {
             throw new Error('A user with that username already exists.')

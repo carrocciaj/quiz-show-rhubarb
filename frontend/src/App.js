@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
 // import PropTypes from 'prop-types'
-// import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
 import RegisterArea from './RegisterArea'
-// import Dashboard from './Dashboard'
+import Dashboard from './Dashboard'
 import data from './data'
 
 class App extends Component {
@@ -42,40 +42,43 @@ class App extends Component {
   }
 
   render () {
-    const { currentUser } = this.state
+    // const { currentUser } = this.state
     return (
+    // Below is the temporary render of login and registration until routes are set
       <React.Fragment>
         <div className='quiz-container'>
           <div className='quiz-head'>Quiz Rhubarb</div>
           <LoginArea />
           <RegisterArea />
-          {/* <Dashboard /> */}
+          <Dashboard />
         </div>
       </React.Fragment>
 
-    // I TRIED TO GET THE ROUTER WORKING! WILL COME BACK TO THIS BECAUSE IT IS CRUCIAL!
+    // I'M TRYING TO GET THE ROUTER WORKING! WILL COME BACK TO THIS BECAUSE IT IS CRUCIAL!
     // <Router>
     //   <div className='App'>
-    //     {/* <Sidebar currentUser={currentUser} onLogout={this.logout} /> */}
-    //     <div className='quiz-container'>
+    //     <div className='Header'>
     //       <div className='quiz-head'>Quiz Rhubarb</div>
-
-    //       <Route exact path='/user' render={() =>
-    //         <Guard condition={this.state.currentUser} redirectTo='/login'>
-    //           <Dashboard currentUser={this.state.currentUser} logout={this.logout} />
-    //         </Guard>} />
+    //     </div>
+    //     <main>
+    //       <Route path='/login' render={() =>
+    //         <Guard condition={!this.state.currentUser} redirectTo='/'>
+    //           <LoginArea setCurrentUser={this.setCurrentUser} />
+    //         </Guard>}
+    //       />
 
     //       <Route path='/register' render={() =>
     //         <Guard condition={!this.state.currentUser} redirectTo='/'>
     //           <RegisterArea setCurrentUser={this.setCurrentUser} />
     //         </Guard>}
     //       />
-    //       <Route path='/login' render={() =>
-    //         <Guard condition={!this.state.currentUser} redirectTo='/'>
-    //           <LoginArea setCurrentUser={this.setCurrentUser} />
+
+    //       <Route path='/quizzes' render={() =>
+    //         <Guard condition={this.state.currentUser} redirectTo='/login'>
+    //           <Dashboard currentUser={this.state.currentUser} logout={this.logout} />
     //         </Guard>}
     //       />
-    //     </div>
+    //     </main>
     //   </div>
     // </Router>
     )
