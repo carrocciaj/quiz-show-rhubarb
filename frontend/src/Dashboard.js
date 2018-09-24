@@ -30,20 +30,22 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    const quiz = this.props.quizzes
+    // if (!this.props.currentUser) {
+    //   return <Redirect to="/login" />
+    // }
     return (
       <React.Fragment>
         <div className='top-nav'>
-          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, ${this.props.username}</span></div>
-          <button className='button is-primary logout-button' onClick={this.props.logout} >log out</button>
-          <div className='logout-bar button'>logout</div>/>
+          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.username}</span></div>
+          <button className='button is-primary logout-button' onClick={this.props.logout}>log out</button>
+          <div className='logout-bar button'>logout</div>
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
             <div className='main-heads'>Take a quiz!</div>
             <div className='published-quizzes'>
-          this.state.quizzes.map(quiz =>
-              <listQuizzes key={quiz.quiz.id} title={quiz.quiz.title} />
+              {this.state.quizzes.map(quiz =>
+                <listQuizzes key={quiz.quiz.id} title={quiz.quiz.title} />)}
             </div>
           </div>
         </div>

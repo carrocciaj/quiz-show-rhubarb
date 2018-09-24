@@ -33,8 +33,6 @@ class LoginArea extends React.Component {
   }
 
   render () {
-    const { username, password } = this.state
-
     return (
       <React.Fragment>
         {/* <QuizBoard> */}
@@ -53,7 +51,7 @@ class LoginArea extends React.Component {
                 <input className='input' type='password' placeholder='password' onChange={(e) => this.setState({ password: e.target.value })} />
               </div>
             </div>
-            <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)} >Login</button>
+            <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)}>Login</button>
             <div className='registration-option'>
               <p className='registration-question'> Don't have an account? </p>
               {/* Keeping a copy of the for when I figure out Routes. Commenting out for now. */}

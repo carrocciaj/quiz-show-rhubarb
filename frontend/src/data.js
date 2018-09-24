@@ -15,7 +15,7 @@ const data = {
   login: (username, password) => {
     return request.post(`${apiDomain}/api/login`)
       .send({ username, password })
-      .then(res => res.body.api_token)
+      .then(res => res.body.token)
       .then(token => {
         data.setUserToken(token)
         return { username, token }

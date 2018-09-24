@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
 // import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+// import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
 import RegisterArea from './RegisterArea'
@@ -48,8 +48,8 @@ class App extends Component {
       <React.Fragment>
         <div className='quiz-container'>
           <div className='quiz-head'>Quiz Rhubarb</div>
-          <LoginArea />
-          <RegisterArea />
+          <LoginArea setCurrentUser={this.setCurrentUser} />
+          <RegisterArea setCurrentUser={this.setCurrentUser} />
           <Dashboard />
         </div>
       </React.Fragment>
@@ -62,9 +62,7 @@ class App extends Component {
     //     </div>
     //     <main>
     //       <Route path='/login' render={() =>
-    //         <Guard condition={!this.state.currentUser} redirectTo='/'>
-    //           <LoginArea setCurrentUser={this.setCurrentUser} />
-    //         </Guard>}
+    //           <LoginArea setCurrentUser={this.setCurrentUser} />}
     //       />
 
     //       <Route path='/register' render={() =>
@@ -74,9 +72,7 @@ class App extends Component {
     //       />
 
     //       <Route path='/quizzes' render={() =>
-    //         <Guard condition={this.state.currentUser} redirectTo='/login'>
-    //           <Dashboard currentUser={this.state.currentUser} logout={this.logout} />
-    //         </Guard>}
+    //          <Dashboard currentUser={this.state.currentUser} logout={this.logout} />}
     //       />
     //     </main>
     //   </div>
