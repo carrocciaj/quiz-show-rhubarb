@@ -40,10 +40,10 @@ class Dashboard extends React.Component {
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
+            <div className='main-heads'>Take a quiz!</div>
             <div className='published-quizzes'>
-              <div className='main-heads'>Take a quiz!</div>
           this.state.quizzes.map(quiz =>
-              <this.state.quizzes key={quiz.quiz.id} title={quiz.quiz.title} />
+              <listQuizzes key={quiz.quiz.id} title={quiz.quiz.title} />
             </div>
           </div>
         </div>
