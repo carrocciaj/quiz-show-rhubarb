@@ -59,7 +59,7 @@ const data = {
 
   getQuizzes: () => {
     return request.get(`${apiDomain}/api/quizzes`)
-      .set('Authorization', `Bearer ${this.state.token}`)
+      .set('Authorization', `Bearer ${userToken}`)
       .then(res => res.body.quizzes)
   }
   // getUserToken
