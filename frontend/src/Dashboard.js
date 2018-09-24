@@ -1,5 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+// import { Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -11,7 +12,7 @@ class Dashboard extends React.Component {
     this.state = {
       quizzes: []
     }
-    // this.XX = this.XX.bind(this)
+    this.listQuizzes = this.listQuizzes.bind(this)
   }
 
   componentDidMount () {
@@ -29,18 +30,23 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    const quiz = this.props.quizzes
+    // if (!this.props.currentUser) {
+    //   return <Redirect to="/login" />
+    // }
     return (
       <React.Fragment>
+        <div className='top-nav'>
+          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.username}</span></div>
+          <button className='button is-primary logout-button' onClick={this.props.logout}>log out</button>
+          <div className='logout-bar button'>logout</div>
+        </div>
         <div className='dashboard-view'>
-          <div className='top-nav'>
-            <button className='button is-primary logout-button' onClick={this.props.logout} >log out</button>
-            <div className='logout-bar button'>logout</div>/>
-          </div>
-          <div className='main-heads'>Take a quiz!</div>
-          <div className='published-quizzes'>
-          this.state.quizzes.map(quiz =>
-            <quiz key={quiz.quiz.id} title={quiz.quiz.title} />
+          <div className='quiz-list'>
+            <div className='main-heads'>Take a quiz!</div>
+            <div className='published-quizzes'>
+              {this.state.quizzes.map(quiz =>
+                <listQuizzes key={quiz.quiz.id} title={quiz.quiz.title} />)}
+            </div>
           </div>
         </div>
       </React.Fragment>

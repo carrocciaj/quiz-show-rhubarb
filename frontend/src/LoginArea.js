@@ -1,9 +1,10 @@
 import React from 'react'
 
-// import { ... } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import data from './data'
-import QuizBoard from './QuizBoard'
+// import QuizBoard from './QuizBoard'
 // import PropTypes from 'prop-types'
+
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -32,35 +33,34 @@ class LoginArea extends React.Component {
   }
 
   render () {
-    const { username, password } = this.state
-
     return (
       <React.Fragment>
-        <QuizBoard>
-
-          <div className='login-view'>
-            <div className='main-heads'>Log in</div>
-            <form>
-              <div className='field'>
-                <label className='label'>Username</label>
-                <div className='control'>
-                  <input className='input' type='text' placeholder='username' onChange={(e) => this.setState({ username: e.target.value })} />
-                </div>
+        {/* <QuizBoard> */}
+        <div className='login-view'>
+          <div className='main-heads'>Log in</div>
+          <form>
+            <div className='field'>
+              <label className='label'>Username</label>
+              <div className='control'>
+                <input className='input' type='text' placeholder='username' onChange={(e) => this.setState({ username: e.target.value })} />
               </div>
-              <div className='field'>
-                <label className='label'>Password</label>
-                <div className='control'>
-                  <input className='input' type='password' placeholder='password' onChange={(e) => this.setState({ password: e.target.value })} />
-                </div>
+            </div>
+            <div className='field'>
+              <label className='label'>Password</label>
+              <div className='control'>
+                <input className='input' type='password' placeholder='password' onChange={(e) => this.setState({ password: e.target.value })} />
               </div>
-              <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)} >Login</button>
-              <div className='registration-option'>
-                <p className='registration-question'> Don't have an account? </p>
-                <button className='button is-primary register-link'>Register</button>
-              </div>
-            </form>
-          </div>
-        </QuizBoard>
+            </div>
+            <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)}>Login</button>
+            <div className='registration-option'>
+              <p className='registration-question'> Don't have an account? </p>
+              {/* Keeping a copy of the for when I figure out Routes. Commenting out for now. */}
+              {/* <Link to='/register'><button className='button is-primary register-link'>Register</button></Link> */}
+              <button className='button is-primary register-link'>Register</button>
+            </div>
+          </form>
+        </div>
+        {/* </QuizBoard> */}
       </React.Fragment>
     )
   }
