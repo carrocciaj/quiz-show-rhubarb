@@ -14,6 +14,7 @@ class LoginArea extends React.Component {
       username: '',
       password: '',
       errorMessage: null
+      // registering: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -31,8 +32,14 @@ class LoginArea extends React.Component {
       })
   }
 
+  register (e, conditional) {
+    e.preventDefault()
+    console.log('here')
+    this.setState({ 'registering': conditional })
+  }
+
   render () {
-    const { username, password } = this.state
+    // const { username, password } = this.state
 
     return (
       <React.Fragment>

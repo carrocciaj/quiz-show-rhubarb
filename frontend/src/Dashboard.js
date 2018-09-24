@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    const quiz = this.props.quizzes
+    let { quiz } = this.props
     return (
       <React.Fragment>
         <div className='dashboard-view'>
@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
           <div className='main-heads'>Take a quiz!</div>
           <div className='published-quizzes'>
           this.state.quizzes.map(quiz =>
-            <quiz key={quiz.quiz.id} title={quiz.quiz.title} />
+            <quiz key={quiz.id} title={quiz.title} />
           </div>
         </div>
       </React.Fragment>
