@@ -60,7 +60,16 @@ const data = {
   getQuizzes: () => {
     return request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
-      .then(res => res.body.quizzes)
+      .then(res => {
+        let quizzes = res.body
+        return (quizzes)
+      })
+  }
+
+  getQuiz: () => { 
+    return request.get(`${apiDomain}/api/quizzes/${id}`)
+    .set('Authorization', `Bearer ${userToken}`)
+    .then(res => res.body)
   }
   // getUserToken
 }

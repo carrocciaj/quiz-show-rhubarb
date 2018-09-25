@@ -42,12 +42,7 @@ class App extends Component {
   }
 
   render () {
-    // if (!this.props.currentUser) {
-    //   return <Redirect to='/login' />
-    // }
-
     return (
-    // Below is the temporary render of login and registration until routes are set
     // <div className='quiz-container'>
     //   <div className='quiz-head'>Quiz Rhubarb</div>
     //   <LoginArea setCurrentUser={this.setCurrentUser} />
