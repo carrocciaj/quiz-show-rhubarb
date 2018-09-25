@@ -7,8 +7,8 @@ import './App.css'
 import data from './data'
 
 class Dashboard extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       quizzes: []
     }
@@ -21,8 +21,8 @@ class Dashboard extends React.Component {
 
   listQuizzes () {
     const { currentUser } = this.props
-    if (currentUser && currentUser.token) {
-      data.setUserToken(currentUser.token)
+    if (currentUser && currentUser.api_token) {
+      data.setUserToken(currentUser.api_token)
       data.getQuizzes().then(quizzes => this.setState({
         quizzes
       }))
@@ -30,6 +30,7 @@ class Dashboard extends React.Component {
   }
 
   render () {
+    const { quizzes } = this.state
     if (!this.props.currentUser) {
       return <Redirect to='/login' />
     }
@@ -43,10 +44,14 @@ class Dashboard extends React.Component {
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
-            <div className='main-heads'>Take a quiz!</div>
+            <div className='main-heads'>Take a quiz!
+            </div>
             <div className='published-quizzes'>
-              {this.state.quizzes.map(quiz =>
-                <div key={quiz.quiz.id} title={quiz.quiz.title}>{quiz.quiz.title}</div>)}
+              {/* {this.state.quizzes.map(quiz =>
+                <div key={quiz.quiz.id} title={quiz.quiz.title}>{quiz.quiz.title}</div>)} */}
+              {quizzes.map(quiz => (
+                <div className='available-quiz' key={quizzes.id}>{quizzes.name}</div>
+              ))}
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ class App extends Component {
     }
 
     const username = window.localStorage.getItem('username')
-    const token = window.localStorage.getItem('token')
+    const token = window.localStorage.getItem('api_token')
     if (username && token) {
       this.state.currentUser = { username, token }
       data.setUserToken(token)
@@ -29,7 +29,7 @@ class App extends Component {
 
   setCurrentUser (user) {
     window.localStorage.setItem('username', user.username)
-    window.localStorage.setItem('token', user.token)
+    window.localStorage.setItem('api_token', user.token)
     this.setState({ currentUser: user })
   }
 
@@ -39,6 +39,10 @@ class App extends Component {
     this.setState({
       currentUser: null
     })
+    // added this on Monday nihght
+    if (!this.props.currentUser) {
+      return <Redirect to='/login' />
+    }
   }
 
   render () {
