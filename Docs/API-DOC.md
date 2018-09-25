@@ -122,7 +122,16 @@ The response will be:
 
 ```json
     {
-        "score": 3(number of correct responses)
+        "data": {
+            "quiz_id": 1,
+            "quiz": "Javascript Arrays",
+            "score": {
+                "user_id": 1,
+                "username": "test-user",
+                "total_questions": 3,
+                "score": 1
+            }
+        }
     }
 ```
 ### Admin
