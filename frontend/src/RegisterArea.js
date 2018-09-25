@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Redirect } from 'react-router-dom'
 import data from './data'
-import QuizBoard from './QuizBoard'
+// import QuizBoard from './QuizBoard'
 // import PropTypes from 'prop-types'
 import 'bulma/css/bulma.css'
 import './App.css'
