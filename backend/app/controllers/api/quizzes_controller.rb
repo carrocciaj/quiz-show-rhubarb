@@ -26,10 +26,10 @@ class Api::QuizzesController < ApplicationController
 
     def update
         if current_user.admin? && !@quiz.published?
-            @quiz = Quiz.find(quiz_params)
+            
 
-            if @quiz.save 
-                render json: @quiz, status: :created
+            if @quiz.update(quiz_params) 
+                render json: @quiz
             else
                 render json: @quiz.errors, status: :unprocessable_entity
             end
