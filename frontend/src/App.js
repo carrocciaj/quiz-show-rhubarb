@@ -81,8 +81,17 @@ class App extends Component {
             }}
             />
 
-            <Route path='/register' render={() =>
+            {/* <Route path='/register' render={() =>
               <RegisterArea setCurrentUser={this.setCurrentUser} />}
+            /> */}
+
+            <Route path='/register' render={() => {
+              if (this.state.currentUser) {
+                return <Redirect to='/quizzes' />
+              } else {
+                return <RegisterArea setCurrentUser={this.setCurrentUser} />
+              }
+            }}
             />
 
             <Route path='/quizzes' render={() => {
@@ -93,6 +102,7 @@ class App extends Component {
               }
             }}
             />
+
             <Route path='/quiz/:id' render={({ match }) =>
               <TakeQuiz id={match.params.id}
                 currentUser={this.state.currentUser} />}

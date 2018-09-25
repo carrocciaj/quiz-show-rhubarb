@@ -53,8 +53,7 @@ class LoginArea extends React.Component {
             </div>
             <button className='button is-primary login-submit' type='submit' onClick={(e) => this.handleSubmit(e)}>Login</button>
             <div className='registration-option'>
-              <p className='registration-question'>Don't have an account?</p>
-              <Link to='/register'><button className='button is-primary register-link'>Register</button></Link>
+              <p className='registration-question'>Don't have an account? <Link to='/register'><span className='register-link'>Register now!</span></Link></p>
             </div>
           </form>
         </div>
