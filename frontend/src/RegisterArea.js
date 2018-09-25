@@ -35,7 +35,7 @@ class RegisterArea extends React.Component {
   }
 
   render () {
-    const { username, password, passwordConfirmation, errorMessage } = this.state
+    const { username, password, passwordConfirmation } = this.state
 
     return (
       <React.Fragment>
@@ -67,6 +67,22 @@ class RegisterArea extends React.Component {
     )
   }
 }
+
+// handleSubmit (event) {
+//   event.preventDefault()
+//   const { username, password, passwordConfirmation } = this.state
+//   if (password === passwordConfirmation) {
+//     data.users(username, password)
+//       .then(user => this.props.setCurrentUser(user))
+//       .catch(err => {
+//         this.setState({
+//           errorMessage: err.message
+//         })
+//       })
+//   } else {
+//     this.setState({ errorMessage: 'Your password confirmation must match your password.' })
+//   }
+// }
 
 // RegisterArea.propTypes = {
 //   setCurrentUser: PropTypes.func.isRequired

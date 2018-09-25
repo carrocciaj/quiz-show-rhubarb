@@ -73,6 +73,17 @@ const data = {
         let quiz = res.body
         return (quiz)
       })
+  },
+
+  submitAnswers: () => {
+    return request.post(`${apiDomain}/api/scores`)
+      // .set('Authorization', `Bearer ${userToken}`)
+      // .then(res => {
+      //   let quizzes = res.body
+      //   return (quizzes)
+
+      // data.score.score
+      })
   }
 
 }
