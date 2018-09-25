@@ -64,13 +64,16 @@ const data = {
         let quizzes = res.body
         return (quizzes)
       })
-  }
+  },
 
-  getQuiz: () => { 
+  getQuiz: (id) => {
     return request.get(`${apiDomain}/api/quizzes/${id}`)
-    .set('Authorization', `Bearer ${userToken}`)
-    .then(res => res.body)
+      .set('Authorization', `Bearer ${userToken}`)
+      .then(res => {
+        let quiz = res.body
+        return (quiz)
+      })
   }
-  // getUserToken
 }
+
 export default data

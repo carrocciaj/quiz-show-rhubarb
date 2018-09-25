@@ -26,6 +26,9 @@ class TakeQuiz extends Component {
   }
 
   render () {
+    if (!this.props.currentUser) {
+      return <Redirect to='/login' />
+    }
     return (
       <React.fragment>
         <ol>

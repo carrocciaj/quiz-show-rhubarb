@@ -35,6 +35,7 @@ class RegisterArea extends React.Component {
   }
 
   render () {
+    
     const { username, password, passwordConfirmation, errorMessage } = this.state
 
     return (
