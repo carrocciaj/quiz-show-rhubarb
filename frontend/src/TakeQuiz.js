@@ -8,7 +8,9 @@ class TakeQuiz extends Component {
   constructor (props) {
     super()
     this.state = {
-      quiz: {}
+      quiz: {},
+      selectedAnswers: []
+      // quiz_id: this.props.id
     }
     this.populateQuiz = this.populateQuiz.bind(this)
   }
@@ -31,30 +33,41 @@ class TakeQuiz extends Component {
     }))
   }
 
+  // handleSubmit () {
+  //   data.submitAnswers
+  // }
+
   render () {
     if (!this.props.currentUser) {
       return <Redirect to='/login' />
     }
-    return (
-      <React.Fragment>
-        <ol>
-          <h1>Goodbye???</h1>
-          {console.log(this.state.quiz.data)}
-          {this.state.quiz.data.map((question, idx) =>
-            <li key={idx}>
-              {question.text}
-              {question.answers.map((answer, idx) =>
-                <div key={idx}>
-                  <input type='radio' id={answer.id}
-                    name={question.id} value={answer.id} />
-                  <label htmlFor={answer.id}>{answer.text}</label>
-                </div>
-              )}
-            </li>
-          )}
-        </ol>
-      </React.Fragment>
-    )
+    const quizData = this.state.quiz
+    if (quizData.data) {
+      return (
+        <div>
+          <ol>
+            {/* add onclick(updateAnswers) to radio inputs ... not correct syntax! */}
+            { quizData.data.questions.map((question, idx) =>
+              <li key={idx}>
+                {question.text}
+                {question.answers.map((answer, idx) =>
+                  <div key={idx}>
+                    <input type='radio' id={answer.id}
+                      name={question.id} value={answer.id} />
+                    <label htmlFor={answer.id}>{answer.text}</label>
+                  </div>
+                )}
+              </li>
+            )}
+          </ol>
+          <button className='button is-primary score-submit' type='submit'>Score me!</button>
+        </div>
+      )
+    } else {
+      return (
+        <p>Get ready...</p>
+      )
+    }
   }
 }
 
