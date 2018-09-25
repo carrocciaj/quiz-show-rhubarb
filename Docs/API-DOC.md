@@ -15,7 +15,7 @@ go to `/users` to create a user as a POST request
 The request body should be:
 ```json
     {
-      "username": "username",
+      "username": "example-username",
       "password": "password"
     }
 ```
@@ -23,10 +23,10 @@ The response will be:
 ```json
 {
     "id": 00,
-    "username": "bk1311",
+    "username": "example-username",
     "password_digest": "$2a$10$AKkKALZ3wUmgfFT1RcuKTOM97eiin/bSWMqVHDGVbuop..GkJYY4e",
     "api_token": "gRgmeaeDgMeo99cSfoBEW3gi",
-    "admin": true/false
+    "admin": false
     "created_at": "2018-09-17T19:15:40.646Z",
     "updated_at": "2018-09-17T19:15:40.646Z"
 }
@@ -38,9 +38,9 @@ The response will be:
   On successful login the response will be the Users's api_token  
 ```json
     {
-      "username": "test1",
-      "token": "fMcBk3LqpkdYNbtTdJy1RMzJ",
-      "admin": true/false
+      "username": "example-username",
+      "api_token": "fMcBk3LqpkdYNbtTdJy1RMzJ",
+      "admin": false
     }
 ```
 ## Users
@@ -108,7 +108,22 @@ The response will be:
 
 ### Submmitting a Quiz
 
-....coming  
+Once the quiz answers have been completed to get the score submit a post request
+`POST api/scores`
 
+The request should be:
+```json
+    {
+        "quiz_id": "id of the quiz they are on",
+        "answer_id": "[array of the selected answer ids]"
+    }
+```
+The response will be:
+
+```json
+    {
+        "score": 3(number of correct responses)
+    }
+```
 ### Admin
 ....coming
