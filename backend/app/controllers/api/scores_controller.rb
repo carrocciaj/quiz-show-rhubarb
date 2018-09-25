@@ -3,9 +3,11 @@ class Api::ScoresController < ApplicationController
   end
 
   def show
+    @score = Scores.find(params[:id])
   end
 
   def create
+    @quiz = Quiz.find(params[:quiz_id])
     @correct_count = 0
     @submitted = params[:answer_id]
     
@@ -24,7 +26,7 @@ class Api::ScoresController < ApplicationController
       }
     )
     
-    render json: { "score": @correct_count }
+    # render json: { "score": @correct_count }
 
   end
 
