@@ -1,6 +1,6 @@
 class Api::AnswersController < ApplicationController
     before_action :set_question
-    before_action :set_answer
+    before_action :set_answer, only: [:show, :update, :destroy]
 
     def show
         render json: @answer
@@ -8,7 +8,8 @@ class Api::AnswersController < ApplicationController
 
     def create
         if current_user.admin?
-            @answer = Answer.new(answer_params)
+            
+            @answer = @question.answers.create(answer_params)
 
             if @answer.save 
                 render json: @answer, status: :created
@@ -22,10 +23,9 @@ class Api::AnswersController < ApplicationController
 
     def update
         if current_user.admin? && !@quiz.published?
-            @answer = Answer.find(answer_params)
 
-            if @answer.save 
-                render json: @answer, status: :created
+            if @answer.update(answer_params)
+                render json: @answer
             else
                 render json: @answer.errors, status: :unprocessable_entity
             end
