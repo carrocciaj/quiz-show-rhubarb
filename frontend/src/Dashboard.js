@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import { BrowserRouter as Redirect , Link } from 'react-router-dom'
+import { BrowserRouter as Redirect, Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -49,7 +49,7 @@ class Dashboard extends React.Component {
               {/* {this.state.quizzes.map(quiz =>
                 <div key={quiz.quiz.id} title={quiz.quiz.title}>{quiz.quiz.title}</div>)} */}
               {quizzes.map(quiz => (
-                <div className='available-quiz' key={quiz.id}><Link to='/quiz/:id'>{quiz.title}</Link></div>
+                <div className='available-quiz' key={quiz.id}><Link to={'/quiz/' + quiz.id}>{quiz.title}</Link></div>
               ))}
             </div>
           </div>

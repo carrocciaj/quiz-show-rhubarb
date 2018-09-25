@@ -5,11 +5,11 @@ import './App.css'
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
-// import TakeQuiz from './TakeQuiz'
 import RegisterArea from './RegisterArea'
 import Dashboard from './Dashboard'
+import TakeQuiz from './TakeQuiz'
 import data from './data'
-import { timingSafeEqual } from 'crypto'
+// import { timingSafeEqual } from 'crypto'
 
 class App extends Component {
   constructor (props) {
@@ -58,7 +58,6 @@ class App extends Component {
     //   <Dashboard />
     // </div>
 
-    // I'M TRYING TO GET THE ROUTER WORKING! WILL COME BACK TO THIS BECAUSE IT IS CRUCIAL!
       <Router>
         <div className='App'>
           <div className='Header'>
@@ -94,11 +93,10 @@ class App extends Component {
               }
             }}
             />
-
-            {/* <Route path='quiz/:id' render={() =>
-              <TakeQuiz
+            <Route path='/quiz/:id' render={({ match }) =>
+              <TakeQuiz id={match.params.id}
                 currentUser={this.state.currentUser} />}
-            /> */}
+            />
           </main>
         </div>
       </Router>
