@@ -26,7 +26,7 @@ The response will be:
     "username": "example-username",
     "password_digest": "$2a$10$AKkKALZ3wUmgfFT1RcuKTOM97eiin/bSWMqVHDGVbuop..GkJYY4e",
     "api_token": "gRgmeaeDgMeo99cSfoBEW3gi",
-    "admin": false
+    "admin": false,
     "created_at": "2018-09-17T19:15:40.646Z",
     "updated_at": "2018-09-17T19:15:40.646Z"
 }
@@ -109,7 +109,7 @@ The response will be:
 ### Submmitting a Quiz
 
 Once the quiz answers have been completed to get the score submit a post request
-`POST api/scores`
+`POST /scores`
 
 The request should be:
 ```json
@@ -134,5 +134,129 @@ The response will be:
         }
     }
 ```
-### Admin
-....coming
+## Admin API 
+
+### Creating a Quiz
+
+Go to `POST /quizzes`  
+The request will be:  
+```json
+    { 
+        "title": "Data Structures"
+    }
+```
+
+The Response will be:
+
+```json
+    {
+        "id": 3,
+        "title": "Data Structures",
+        "created_at": "2018-09-25T19:18:12.173Z",
+        "updated_at": "2018-09-25T19:18:12.173Z",
+        "published": false
+    }
+```
+### Publish the Quiz
+
+Once the Quiz and all questions and answers are created you will need to Publish the Quiz to make it available  
+##### Publishing a quiz will disable future edits 
+To Publish go to:
+`PUT /quizzes/id`  
+The request will be:
+
+```json
+    { 
+        "published": true
+    }
+```
+
+The response will be:
+
+```json
+    {
+        "published": true,
+        "id": 3,
+        "title": "Data Structures",
+        "created_at": "2018-09-25T19:18:12.173Z",
+        "updated_at": "2018-09-25T19:26:36.229Z"
+    }
+```
+
+### Create Questions
+
+To Create a question go to  
+`POST /questions`
+
+```json
+    {
+        "quiz_id": 3,
+        "text": "Which of these is a Hash?"	
+    }
+```
+
+The response will be:
+
+```json
+    {
+        "id": 8,
+        "text": "Which of these is a Hash?",
+        "quiz_id": 3,
+        "created_at": "2018-09-25T19:43:02.565Z",
+        "updated_at": "2018-09-25T19:43:02.565Z"
+    }
+```
+
+To edit go to  
+`PUT /questions/id`  
+The request will be this
+```json
+    {	
+        "text": "Which of these is not a Hash?"	
+    }
+```
+
+The response will be the same as the create response but with the edit made  
+
+To Delete a question:
+
+`DELETE /questions/id`
+
+Response will be:  
+```json
+    {
+        "notice": "Question has been deleted"
+    }
+```
+### Answers
+
+To create an Answer Go to  
+`POST /questions/id/answers`
+Request:
+```json
+    {
+		"text": "['John', 'Jeff']",
+		"correct": false
+	}
+``` 
+
+Response:
+
+```json
+    {
+        "id": 26,
+        "text": "['John', 'Jeff']",
+        "question_id": 8,
+        "correct": false,
+        "created_at": "2018-09-25T20:09:11.573Z",
+        "updated_at": "2018-09-25T20:09:11.573Z"
+    }
+```
+
+To edit go to  
+`PUT /questions/id/answers/id`  
+
+The request will be the fields you want to edit, text or correct.  
+
+To Delete:
+`DELETE /questions/id/answers/id` 
