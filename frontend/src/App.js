@@ -5,12 +5,14 @@ import './App.css'
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
+// import TakeQuiz from './TakeQuiz'
 import RegisterArea from './RegisterArea'
 import Dashboard from './Dashboard'
 import data from './data'
+import { timingSafeEqual } from 'crypto'
 
 class App extends Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
       currentUser: null
@@ -34,11 +36,12 @@ class App extends Component {
   }
 
   logout () {
-    data.setUserToken(null)
+    data.setUserToken()
     window.localStorage.clear()
     this.setState({
       currentUser: null
     })
+    // added this on Monday nihght
   }
 
   render () {
@@ -69,6 +72,7 @@ class App extends Component {
                 return <Redirect to='/login' />
               }
             }} />
+
             <Route path='/login' render={() => {
               if (this.state.currentUser) {
                 return <Redirect to='/quizzes' />
@@ -82,9 +86,19 @@ class App extends Component {
               <RegisterArea setCurrentUser={this.setCurrentUser} />}
             />
 
-            <Route path='/quizzes' render={() =>
-              <Dashboard currentUser={this.state.currentUser} logout={this.logout} />}
+            <Route path='/quizzes' render={() => {
+              if (!this.state.currentUser) {
+                return <Redirect to='/login' />
+              } else {
+                return <Dashboard currentUser={this.state.currentUser} logout={this.logout} />
+              }
+            }}
             />
+
+            {/* <Route path='quiz/:id' render={() =>
+              <TakeQuiz
+                currentUser={this.state.currentUser} />}
+            /> */}
           </main>
         </div>
       </Router>

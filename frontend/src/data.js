@@ -11,11 +11,10 @@ const data = {
   getUserToken: () => {
     return userToken
   },
-
   login: (username, password) => {
     return request.post(`${apiDomain}/api/login`)
       .send({ username, password })
-      .then(res => res.body.token)
+      .then(res => res.body.api_token)
       .then(token => {
         data.setUserToken(token)
         return { username, token }
@@ -35,10 +34,10 @@ const data = {
   users: (username, password) => {
     return request.post(`${apiDomain}/api/users`)
       .send({ username, password })
-      .then(res => res.body)
-      .then(user => {
-        data.setUserToken(user.token)
-        return user
+      .then(res => res.body.api_token)
+      .then(token => {
+        data.setUserToken(token)
+        return { username, token }
       })
 
       .catch(err => {
@@ -57,11 +56,14 @@ const data = {
       })
   },
 
+  // updated this with the /quiz.id added to endpoints doc
   getQuizzes: () => {
     return request.get(`${apiDomain}/api/quizzes`)
       .set('Authorization', `Bearer ${userToken}`)
-      .then(res => res.body.quizzes)
+      .then(res => {
+        let quizzes = res.body
+        return (quizzes)
+      })
   }
-  // getUserToken
 }
 export default data
