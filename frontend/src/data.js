@@ -34,10 +34,10 @@ const data = {
   users: (username, password) => {
     return request.post(`${apiDomain}/api/users`)
       .send({ username, password })
-      .then(res => res.body)
-      .then(user => {
-        data.setUserToken(user.api_token)
-        return user
+      .then(res => res.body.api_token)
+      .then(token => {
+        data.setUserToken(token)
+        return { username, token }
       })
 
       .catch(err => {
@@ -65,11 +65,5 @@ const data = {
         return (quizzes)
       })
   }
-  // getQuizzes: () => {
-  //   return request.get(`${apiDomain}/api/quizzes`)
-  //     .set('Authorization', `Bearer ${userToken}`)
-  //     .then(res => res.body.quizzes)
-  // }
-  // getUserToken
 }
 export default data

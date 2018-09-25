@@ -5,19 +5,21 @@ import './App.css'
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 
 import LoginArea from './LoginArea'
+// import TakeQuiz from './TakeQuiz'
 import RegisterArea from './RegisterArea'
 import Dashboard from './Dashboard'
 import data from './data'
+import { timingSafeEqual } from 'crypto'
 
 class App extends Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
       currentUser: null
     }
 
     const username = window.localStorage.getItem('username')
-    const token = window.localStorage.getItem('api_token')
+    const token = window.localStorage.getItem('token')
     if (username && token) {
       this.state.currentUser = { username, token }
       data.setUserToken(token)
@@ -29,20 +31,17 @@ class App extends Component {
 
   setCurrentUser (user) {
     window.localStorage.setItem('username', user.username)
-    window.localStorage.setItem('api_token', user.token)
+    window.localStorage.setItem('token', user.token)
     this.setState({ currentUser: user })
   }
 
   logout () {
-    data.setUserToken(null)
+    data.setUserToken()
     window.localStorage.clear()
     this.setState({
       currentUser: null
     })
     // added this on Monday nihght
-    if (!this.props.currentUser) {
-      return <Redirect to='/login' />
-    }
   }
 
   render () {
@@ -73,6 +72,7 @@ class App extends Component {
                 return <Redirect to='/login' />
               }
             }} />
+
             <Route path='/login' render={() => {
               if (this.state.currentUser) {
                 return <Redirect to='/quizzes' />
@@ -86,9 +86,19 @@ class App extends Component {
               <RegisterArea setCurrentUser={this.setCurrentUser} />}
             />
 
-            <Route path='/quizzes' render={() =>
-              <Dashboard currentUser={this.state.currentUser} logout={this.logout} />}
+            <Route path='/quizzes' render={() => {
+              if (!this.state.currentUser) {
+                return <Redirect to='/login' />
+              } else {
+                return <Dashboard currentUser={this.state.currentUser} logout={this.logout} />
+              }
+            }}
             />
+
+            {/* <Route path='quiz/:id' render={() =>
+              <TakeQuiz
+                currentUser={this.state.currentUser} />}
+            /> */}
           </main>
         </div>
       </Router>

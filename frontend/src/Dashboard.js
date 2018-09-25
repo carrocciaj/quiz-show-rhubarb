@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import { BrowserRouter as Redirect } from 'react-router-dom'
+import { BrowserRouter as Redirect , Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
 
@@ -21,8 +21,8 @@ class Dashboard extends React.Component {
 
   listQuizzes () {
     const { currentUser } = this.props
-    if (currentUser && currentUser.api_token) {
-      data.setUserToken(currentUser.api_token)
+    if (currentUser && currentUser.token) {
+      data.setUserToken(currentUser.token)
       data.getQuizzes().then(quizzes => this.setState({
         quizzes
       }))
@@ -38,9 +38,8 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <div className='top-nav'>
-          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.username}</span></div>
+          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.currentUser.username}</span></div>
           <button className='button is-primary logout-button' onClick={this.props.logout}>log out</button>
-          <div className='logout-bar button'>logout</div>
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
@@ -50,7 +49,7 @@ class Dashboard extends React.Component {
               {/* {this.state.quizzes.map(quiz =>
                 <div key={quiz.quiz.id} title={quiz.quiz.title}>{quiz.quiz.title}</div>)} */}
               {quizzes.map(quiz => (
-                <div className='available-quiz' key={quizzes.id}>{quizzes.name}</div>
+                <div className='available-quiz' key={quiz.id}><Link to='/quiz/:id'>{quiz.title}</Link></div>
               ))}
             </div>
           </div>
