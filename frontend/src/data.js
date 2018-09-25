@@ -1,4 +1,4 @@
-import request from 'superagent'
+import request from 'superagent/superagent.js'
 
 let userToken
 const apiDomain = process.env.REACT_APP_API_DOMAIN
@@ -77,13 +77,12 @@ const data = {
 
   submitAnswers: () => {
     return request.post(`${apiDomain}/api/scores`)
-      // .set('Authorization', `Bearer ${userToken}`)
-      // .then(res => {
-      //   let quizzes = res.body
-      //   return (quizzes)
+    // .set('Authorization', `Bearer ${userToken}`)
+    // .then(res => {
+    //   let quizzes = res.body
+    //   return (quizzes)
 
-      // data.score.score
-      })
+    // data.score.score
   }
 
 }
