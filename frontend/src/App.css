@@ -8,7 +8,6 @@ body {
   font-size: 1.5rem;
   text-align: center;
   margin: 0 auto;
-  
 }
 
 .quiz-container {
@@ -31,7 +30,7 @@ body {
 }
 
 .field {
-  margin: 0 20px;
+  margin: 0 40px;
 }
 
 .label {
@@ -54,8 +53,8 @@ body {
 }
 
 .registration-option {
-  margin-top: 10px;
-  text-align: right;
+  margin: 25px 20px 10px 0;
+  text-align: center;
 }
 
 .registration-question {
@@ -67,7 +66,8 @@ body {
 
 .register-link {
   display: inline-block;
-  margin-left: 15px;
+  /* margin-left: 15px; */
+  font-weight: 600;
 }
 
 .register-submit {
@@ -85,8 +85,4 @@ body {
   margin: 0 auto;
 }
 
-/* This is a temporary spacing measure until we get routes established! */
-.registration-view {
-  margin-top: 100px;
-}
 

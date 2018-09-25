@@ -9,7 +9,8 @@ import LoginArea from './LoginArea'
 import RegisterArea from './RegisterArea'
 import Dashboard from './Dashboard'
 import data from './data'
-import { timingSafeEqual } from 'crypto'
+import TakeQuiz from './TakeQuiz'
+// import { timingSafeEqual } from 'crypto'
 
 class App extends Component {
   constructor (props) {
@@ -82,8 +83,17 @@ class App extends Component {
             }}
             />
 
-            <Route path='/register' render={() =>
+            {/* <Route path='/register' render={() =>
               <RegisterArea setCurrentUser={this.setCurrentUser} />}
+            /> */}
+
+            <Route path='/register' render={() => {
+              if (this.state.currentUser) {
+                return <Redirect to='/quizzes' />
+              } else {
+                return <RegisterArea setCurrentUser={this.setCurrentUser} />
+              }
+            }}
             />
 
             <Route path='/quizzes' render={() => {
@@ -95,10 +105,10 @@ class App extends Component {
             }}
             />
 
-            {/* <Route path='quiz/:id' render={() =>
+            <Route path='quiz/:id' render={() =>
               <TakeQuiz
                 currentUser={this.state.currentUser} />}
-            /> */}
+            />
           </main>
         </div>
       </Router>

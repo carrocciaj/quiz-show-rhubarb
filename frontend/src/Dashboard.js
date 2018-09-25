@@ -3,7 +3,6 @@ import React from 'react'
 import { BrowserRouter as Redirect , Link } from 'react-router-dom'
 import 'bulma/css/bulma.css'
 import './App.css'
-
 import data from './data'
 
 class Dashboard extends React.Component {

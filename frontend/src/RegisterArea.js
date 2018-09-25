@@ -24,11 +24,11 @@ class RegisterArea extends React.Component {
     if (password === passwordConfirmation) {
       data.users(username, password)
         .then(user => this.props.setCurrentUser(user))
-        // .catch(err => {
-        //   this.setState({
-        //     errorMessage: err.message
-        //   })
-        // })
+        .catch(err => {
+          this.setState({
+            errorMessage: err.message
+          })
+        })
     } else {
       this.setState({ errorMessage: 'Your password confirmation must match your password.' })
     }
