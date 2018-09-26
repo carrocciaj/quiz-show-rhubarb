@@ -75,16 +75,15 @@ const data = {
       })
   },
 
-  submitAnswers: () => {
+  submitAnswers: (quiz_id, answer_id) => {
     return request.post(`${apiDomain}/api/scores`)
-    // .set('Authorization', `Bearer ${userToken}`)
-    // .then(res => {
-    //   let quizzes = res.body
-    //   return (quizzes)
+      .send({ quiz_id, answer_id })
+      .then(res => {
+        let quizScore = res.body.data.score.score
+        return { quizScore }
+      })
 
-    // data.score.score
   }
 
 }
-
 export default data

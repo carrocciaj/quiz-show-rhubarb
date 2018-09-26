@@ -61,7 +61,7 @@ class App extends Component {
       <Router>
         <div className='App'>
           <div className='Header'>
-            <div className='quiz-head'>Quiz Rhubarb</div>
+            <div className='quiz-logo'>Quiz Rhubarb</div>
           </div>
           <main>
             <Route exact path='/' render={() => {

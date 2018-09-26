@@ -37,8 +37,7 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <div className='top-nav'>
-          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.currentUser.username}</span></div>
-          <button className='button is-primary logout-button' onClick={this.props.logout}>log out</button>
+          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.currentUser.username}!</span></div>
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
@@ -52,6 +51,7 @@ class Dashboard extends React.Component {
               ))}
             </div>
           </div>
+          <button className='button is-primary logout-button' onClick={this.props.logout}>log out</button>
         </div>
       </React.Fragment>
     )
