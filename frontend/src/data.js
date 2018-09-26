@@ -1,4 +1,4 @@
-import request from 'superagent'
+import request from 'superagent/superagent.js'
 
 let userToken
 const apiDomain = process.env.REACT_APP_API_DOMAIN
@@ -82,6 +82,7 @@ const data = {
         let quizScore = res.body.data.score.score
         return { quizScore }
       })
+
   }
 
 }
