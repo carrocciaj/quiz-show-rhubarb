@@ -13,13 +13,14 @@ body {
 .quiz-container {
   background-color: white;
   margin: 0 20px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .quiz-logo {
   display: block;
-  font-size: 3rem;
-  margin: 20px auto;
+  font-size: 3.25rem;
+  margin: 0 auto;
+  padding: 80px auto;
   font-weight: 100;
   /* color: #CD5C5C; */
   color: white;
@@ -32,6 +33,7 @@ body {
   font-size: 2rem;
   margin: 20px auto;
   font-weight: 600;
+  line-height: 2rem;
   color: #CD5C5C;
 }
 
@@ -42,14 +44,15 @@ body {
 .current-quiz {
   text-align: center;
   max-width: 100%;
-  margin: 20px 10px;
+  margin: 30px 10px 50px 10px;
 }
 
 .quiz-questions {
 margin: 20px 10px;
+text-align: left;
 font-size: 1.25rem;
 /* line-height: 1rem; */
-font-weight: 600;
+font-weight: 800
 }
 
 .quiz-answers {
@@ -69,7 +72,7 @@ font-weight: 600;
 .main-heads {
   font-size: 2rem;
   font-weight: 600;
-  text-transform: allcaps;
+  margin: 10px 0;
 }
 
 .field {
@@ -80,6 +83,7 @@ font-weight: 600;
   font-size: 1.25rem;
   text-align: left;
   font-weight: 100;
+  /* margin-left: 10px; */
 }
 
 .input {
@@ -88,6 +92,7 @@ font-weight: 600;
   font-weight: 100;
   padding: 10px;
   border-radius: 3px;
+  margin-right: 10px;
 }
 
 .login-submit {
@@ -125,14 +130,23 @@ font-weight: 600;
 
 .control {
   display: block;
-  margin: 0 auto;
+  margin: 4px auto;
 }
 
 .welcome-user-top {
   font-size: 1.25rem;
   font-weight: 100;
-  margin-bottom: 25px;
+  margin: 25px 0;
   font-style: italic;
+}
+
+.QandA-unit {
+  margin: 0 auto;
+}
+
+.score-submit {
+  margin-top: 20px 0 40px 0;
+  background-color: #CD5C5C;
 }
 
 

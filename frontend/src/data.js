@@ -29,6 +29,9 @@ const data = {
           throw new Error('There was a problem communicating with the server.')
         }
       })
+    // Wrap error message in bulma notification stying:
+    // <div class="notification is-warning">
+    // <button class="delete"></button> </div>
   },
 
   users: (username, password) => {
@@ -43,6 +46,7 @@ const data = {
       .catch(err => {
         if (err.response.statusCode === 422) {
           const errors = err.response.body.errors
+          // This part below [0] is causing an error.
           if (errors[0].message === 'cannot be empty') {
             throw new Error('You must provide a username and password.')
           } else if (errors[0] === 'user already exists') {
@@ -54,6 +58,9 @@ const data = {
           throw new Error('There was a problem communicating with the server.')
         }
       })
+    // Wrap error message in bulma notification stying:
+    // <div class="notification is-warning">
+    // <button class="delete"></button> </div>
   },
 
   // updated this with the /quiz.id added to endpoints doc
@@ -83,6 +90,5 @@ const data = {
         return { quizScore }
       })
   }
-
 }
 export default data

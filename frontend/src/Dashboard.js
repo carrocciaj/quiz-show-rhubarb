@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <div className='top-nav'>
-          <div className='welcome-user-top'><span className='top-welcome'>Welcome back, {this.props.currentUser.username}!</span></div>
+          <div className='welcome-user-top'><span className='top-welcome'>Welcome, {this.props.currentUser.username}!</span></div>
         </div>
         <div className='dashboard-view'>
           <div className='quiz-list'>
