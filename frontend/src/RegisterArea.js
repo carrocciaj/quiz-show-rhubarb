@@ -45,6 +45,12 @@ class RegisterArea extends React.Component {
         <div className='registration-view'>
           <div className='main-heads'>Register</div>
           <form onSubmit={this.handleSubmit}>
+            {/* <div class='notification is-warning'>
+            {this.errorMessage} */}
+              {/* <button class='delete'/> */}
+            {/* </div> */}
+            {/* <div class="notification is-warning">
+          <button class="delete"></button> </div> */}
             <div className='field'>
               <label className='label'>Username</label>
               <div className='control'>

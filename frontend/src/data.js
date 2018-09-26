@@ -45,17 +45,23 @@ const data = {
 
       .catch(err => {
         if (err.response.statusCode === 422) {
-          const errors = err.response.body.errors
+          // const errors = err.response.body.errors
+
+          let usernameError = err.response.body.username
+          let passwordError = err.response.body.password
+          let newErrorArray = passwordError.concat(usernameError)
+          throw new Error(newErrorArray)
+
           // This part below [0] is causing an error.
-          if (errors[0].message === 'cannot be empty') {
-            throw new Error('You must provide a username and password.')
-          } else if (errors[0] === 'user already exists') {
-            throw new Error('A user with that username already exists.')
-          } else {
-            throw new Error(`An unknown problem occurred: ${errors}`)
-          }
-        } else {
-          throw new Error('There was a problem communicating with the server.')
+          // if (errors[0].message === 'cannot be empty') {
+          //   throw new Error('You must provide a username and password.')
+          // } else if (errors[0] === 'user already exists') {
+          //   throw new Error('A user with that username already exists.')
+          // } else {
+          //   throw new Error(`An unknown problem occurred: ${errors}`)
+          // }
+        // } else {
+        //   throw new Error('There was a problem communicating with the server.')
         }
       })
     // Wrap error message in bulma notification stying:
@@ -82,14 +88,17 @@ const data = {
       })
   },
 
-  submitAnswers: (quiz_id, answer_id) => {
+  // can we submit the updated array from TakeQuiz file?
+  submitAnswers: (quizId, answerId) => {
     return request.post(`${apiDomain}/api/scores`)
-      .send({ quiz_id, answer_id })
-      .then(res => {
-        let quizScore = res.body.data.score.score
-        return { quizScore }
-      })
-
+      .set('Authorization', `Bearer ${userToken}`)
+      .type('application/json')
+      .send({ quiz_id: quizId, answer_id: answerId })
+      .then(res =>
+        res.body.data.score.score
+        // console.log(quizScore)
+        // return { quizScore }
+      )
   }
 }
 export default data
