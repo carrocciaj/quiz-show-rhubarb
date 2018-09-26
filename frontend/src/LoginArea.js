@@ -28,9 +28,6 @@ class LoginArea extends React.Component {
       .catch(err => {
         this.setState({
           errorMessage: err.errorMessage
-          // Wrap error message in bulma notification stying:
-          // <div class="notification is-warning">
-          // <button class="delete"></button> </div>
         })
       })
   }

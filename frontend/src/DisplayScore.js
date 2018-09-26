@@ -20,8 +20,7 @@ class DisplayScore extends React.Component {
   }
 
   displayScore () {
-    alert(`You chose the ${this.state.size} pizza.`);
-
+    
   }
 
   render () {
