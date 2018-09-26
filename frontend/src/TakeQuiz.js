@@ -3,7 +3,7 @@ import 'bulma/css/bulma.css'
 import './App.css'
 import { BrowserRouter as Redirect } from 'react-router-dom'
 import data from './data'
-import { callbackify } from 'util'
+// import { callbackify } from 'util'
 
 class TakeQuiz extends Component {
   constructor (props) {
@@ -68,7 +68,7 @@ class TakeQuiz extends Component {
                       {/* Re: below. it wouldn't let me make checked={true} as done in that article and rec'd by Amy ... need to assign that something */}
                       <div class='control'>
                         <input type='radio' id={answer.id}
-                          name={question.id} value={answer.id} checked='check' onChange={this.handleChange} />
+                          name={question.id} value={answer.id} onChange={this.handleChange} />
                         <label className='radio answers' htmlFor={answer.id}>{answer.text}</label>
                       </div>
                     </div>

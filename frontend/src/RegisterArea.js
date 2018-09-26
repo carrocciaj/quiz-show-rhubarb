@@ -27,6 +27,9 @@ class RegisterArea extends React.Component {
         .catch(err => {
           this.setState({
             errorMessage: err.message
+            // Wrap error message in bulma notification stying:
+          // <div class="notification is-warning">
+          // <button class="delete"></button> </div>
           })
         })
     } else {
