@@ -10,22 +10,16 @@ class TakeQuiz extends Component {
     this.state = {
       quiz: {},
       selectedAnswers: []
+
       // quiz_id: this.props.id
     }
     this.populateQuiz = this.populateQuiz.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount () {
     this.populateQuiz()
   }
-
-  // populateQuiz () {
-  //   data.getQuiz(this.props.id)
-  //     .then(quiz => this.setState({
-  //       title: quiz.data.title,
-  //       questions: quiz.data.questions
-  //     }))
-  // }
 
   populateQuiz () {
     data.getQuiz(this.props.id).then(quiz => this.setState({
@@ -37,6 +31,16 @@ class TakeQuiz extends Component {
   //   data.submitAnswers
   // }
 
+  // handleRadioButton (value) {
+  //   this.setState({
+  //     value: value
+  //   })
+  // }
+
+  handleChange (event) {
+    this.setState({value: event.target.value})
+  }
+
   render () {
     if (!this.props.currentUser) {
       return <Redirect to='/login' />
@@ -46,14 +50,17 @@ class TakeQuiz extends Component {
       return (
         <div>
           <ol>
-            {/* add onclick(updateAnswers) to radio inputs ... not correct syntax! */}
             { quizData.data.questions.map((question, idx) =>
               <li key={idx}>
                 {question.text}
                 {question.answers.map((answer, idx) =>
                   <div key={idx}>
                     <input type='radio' id={answer.id}
-                      name={question.id} value={answer.id} />
+                      name={question.id} value={answer.id}
+                      checked={this.state.selectedAnswer === (answer.id)}
+                      onChange={this.handleChange}
+                    />
+                      />
                     <label htmlFor={answer.id}>{answer.text}</label>
                   </div>
                 )}
