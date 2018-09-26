@@ -20,13 +20,8 @@ class DisplayScore extends React.Component {
   }
 
   displayScore () {
-    // const { currentUser } = this.props
-    // if (currentUser && currentUser.token) {
-    //   data.setUserToken(currentUser.token)
-    //   data.getQuizzes().then(quizzes => this.setState({
-    //     quizzes
-    //   }))
-    // }
+    alert(`You chose the ${this.state.size} pizza.`);
+
   }
 
   render () {
