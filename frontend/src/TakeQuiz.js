@@ -54,7 +54,7 @@ class TakeQuiz extends Component {
     if (quizData.data) {
       return (
         <React.Fragment>
-          {yourScore !== '' ? <p>You got {this.state.score} out of {Object.values(this.state.selectedAnswers).length}</p>
+          {yourScore !== '' ? <div className='score-announce'><p>You answered <span className='score-tally'>{this.state.score} </span>out of <span className='score-tally'>{Object.values(this.state.selectedAnswers).length}</span> correctly. </p></div>
 
             : <div className='current-quiz'>
               <div className='quiz quiz-head'>{quizData.data.title}</div>
